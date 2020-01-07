@@ -180,9 +180,11 @@ input[type='range']::-webkit-slider-thumb {
 
 /*messages*/
 .messages{
-  color:#000080;
+  color:orange;
 }
-.messages h3{
+.messages h5{
   font-style: italic;
 }
-
+#name_error{
+  color:red;
+}

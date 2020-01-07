@@ -14,6 +14,8 @@ from .models import user
 from .models import furniture
 
 
+
+
 # Register your models here.
 
 admin.site.register(room)

@@ -61,7 +61,7 @@ def user_register(request):
             s=styles=request.POST['style']
             s=s.split(',')
             furn=request.POST['furn']
-            u = user(password=password,email=email)
+            u = user(username=username,password=password,email=email)
             u.rooms=room.objects.get(pk=rooms)
             goals = goal.objects.filter(pk__in=g)
             styles = design.objects.filter(pk__in=s)
@@ -72,7 +72,7 @@ def user_register(request):
             messages.success(request,'Your project design has been registered')
             return render(request,'register.html')
         else:
-            messages.warning(request,'This email already exists')
+            messages.warning(request,'Cant be registered this email already exists')
             return render(request,'register.html')
 
 

@@ -53,6 +53,7 @@ class furniture(models.Model):
 
 # This is the users model
 class user(models.Model):
+	username=models.CharField(max_length=20)
 	email=models.CharField(max_length=50,unique=True)
 	password=models.CharField(max_length=50,default='0000000')
 	rooms = models.ForeignKey(room,on_delete=models.CASCADE)
@@ -61,5 +62,8 @@ class user(models.Model):
 	furn = models.ForeignKey(furniture,on_delete=models.CASCADE)
 	created_at = models.DateTimeField(default=datetime.now)
 	updated_at = models.DateTimeField(default=datetime.now)
+
+	def __str__(self):
+		return self.username
 	
 
