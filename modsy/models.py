@@ -56,14 +56,22 @@ class user(models.Model):
 	username=models.CharField(max_length=20)
 	email=models.CharField(max_length=50,unique=True)
 	password=models.CharField(max_length=50,default='0000000')
-	rooms = models.ForeignKey(room,on_delete=models.CASCADE)
-	goals = models.ManyToManyField(goal)
-	styles = models.ManyToManyField(design)
-	furn = models.ForeignKey(furniture,on_delete=models.CASCADE)
 	created_at = models.DateTimeField(default=datetime.now)
 	updated_at = models.DateTimeField(default=datetime.now)
 
 	def __str__(self):
 		return self.username
-	
+
+class UserRequirement(models.Model):
+	user=models.ForeignKey(user,on_delete=models.CASCADE)
+	room = models.ForeignKey(room,on_delete=models.CASCADE)
+	goal = models.ManyToManyField(goal)
+	design = models.ManyToManyField(design)
+	furniture = models.ForeignKey(furniture,on_delete=models.CASCADE)
+	created_at = models.DateTimeField(default=datetime.now)
+	updated_at = models.DateTimeField(default=datetime.now)
+
+
+
+
 

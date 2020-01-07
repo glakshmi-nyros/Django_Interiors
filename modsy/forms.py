@@ -2,12 +2,19 @@
 from django import forms
 from . models import user
 from django.contrib.auth.models import User
+from . models import UserRequirement
+from . models import room
+from . models import goal
+from . models import design
+from . models import furniture
+
+
 
 
 class UserForm(forms.ModelForm):
     class Meta:
         model = user
-        fields = ('email',)
+        fields = ('username','email','password')
 
     def clean_email(self):
         # Get the email
@@ -20,4 +27,7 @@ class UserForm(forms.ModelForm):
             # Unable to find a user, this is fine
             return email
             raise forms.ValidationError('This email address is already in use.')
-
+class UserRequirementForm(forms.ModelForm):
+    class Meta:
+        model = UserRequirement
+        fields=('room','goal','design','furniture')

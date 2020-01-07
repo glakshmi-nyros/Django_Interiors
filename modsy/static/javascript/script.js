@@ -4,24 +4,19 @@ $(document).ready(function(){
 $('#main_1').click(function() {
   $(".blue").removeClass("blue");
   $(this).addClass("blue");
-    
 });
 $('#main_2').click(function() {
   $(".blue").removeClass("blue");
   $(this).addClass("blue");
-    
 });
 $('#main_3').click(function() {
   $(".blue").removeClass("blue");
   $(this).addClass("blue");
     
 });
-
-
 $('#main_4').click(function() {
   $(".blue").removeClass("blue");
   $(this).addClass("blue");
-    
 });
 $('#main_5').click(function() {
   $(".blue").removeClass("blue");

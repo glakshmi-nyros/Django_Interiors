@@ -101,7 +101,7 @@
         </div>
         <div class="card-body">
           <!-- Form Starts-->
-          <form action="{% url 'modsy:user_register' %}" method="POST"  >
+          <form action="{% url 'modsy:user_register' %}" method="POST">
             {% csrf_token %}
             <div class="form-group">
               <label for="username">Username</label>
@@ -109,28 +109,29 @@
               <div id="uname_error"></div>
             </div>
             <div class="form-group">
-              <input type="hidden" name="room" id="name" value="">
-            </div>
-            <div class="form-group" >
-              <input type="hidden" name="goal" id="goal" value="">
+              <input type="number" name="room" id="name" value="">
             </div>
             <div class="form-group">
-              <input type="hidden" name="style" id="style" value=" ">
+              <select name="design" id="design" multiple>
+                <option value=""> </option>
+                <option value=""> </option>
+              </select>
             </div>
+
             <div class="form-group" >
-              <input type="hidden" name="furn" id="furn" value="">
+              <input type="number" name="furniture" id="furniture" value="">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
               <input type="text" name="email" class="form-control" required><br>
-              <div id="name_error" style="color:red;"></div>
-              
-            </div>
+              <div id="name_error" style="color:red;"></div></div>
             <div class="form-group">
               <label for="password2">Password</label>
               <input type="password" name="password" class="form-control" required>
               <div id="pwd_error" style="color:red;"></div>
             </div>
+            {{ user_form.errors }} 
+            {{ requirements_form.errors }} 
             <div class="button"><input type="submit" value="Save the Project" style="background-color:#000080;" class="btn btn-secondary btn-block" onclick="return validation(form)">
           </form>
           <!-- Form ends-->

@@ -23,7 +23,7 @@ function getStyle(id) {
     assample();
 }
 function assample() {
-    $("#style").val(styleIds);
+    $("#design").val(styleIds);
     console.log(styleIds)
 }
 function initStyles() {

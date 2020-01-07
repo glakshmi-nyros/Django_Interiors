@@ -11,6 +11,8 @@ from django.http import HttpResponse
 from django.shortcuts import render,HttpResponseRedirect
 from django.contrib import messages
 from modsy.forms import UserForm
+from modsy.forms import UserRequirementForm
+
 from django import forms
 
 
@@ -21,6 +23,8 @@ from . models import goal
 from . models import design
 from . models import user
 from . models import furniture
+from . models import UserRequirement
+
 
 
 # Create your views here.
@@ -48,37 +52,22 @@ def home(request):
 	return render(request,'register.html')
 
 # This view is for storing all the steps of start a project wizard in the database
+
 def user_register(request):
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
-        if user_form.is_valid():
-            username=request.POST["username"]
-            email = request.POST['email']
-            password = request.POST['password']
-            rooms = request.POST['room']
-            g=goals=request.POST['goal']
-            g = g.split(',')
-            s=styles=request.POST['style']
-            s=s.split(',')
-            furn=request.POST['furn']
-            u = user(username=username,password=password,email=email)
-            u.rooms=room.objects.get(pk=rooms)
-            goals = goal.objects.filter(pk__in=g)
-            styles = design.objects.filter(pk__in=s)
-            u.furn = furniture.objects.get(pk=furn)
-            u.save()
-            u.goals.add(*goals)
-            u.styles.add(*styles)
-            messages.success(request,'Your project design has been registered')
-            return render(request,'register.html')
+        user_requirement_form = UserRequirementForm(data=request.POST)
+        if user_form.is_valid() and user_requirement_form.is_valid():
+            user = user_form.save()
+            user_requirement = user_requirement_form.save(commit=False)
+            # Set user
+            user_requirement.user = user
+            user_requirement.save()
+            user_requirement_form.save_m2m()
+            redirect(...)
         else:
-            messages.warning(request,'Cant be registered this email already exists')
-            return render(request,'register.html')
-
-
-        
-
-
-
-
-	
+            messages.warning(request, 'Please correct the errors below')
+    else:  
+        user_form = UserForm()
+        user_requirement_form = UserRequirementForm()
+    return render(request,'register.html', {'user_form': user_form, 'requirements_form': user_requirement_form})
