@@ -10,6 +10,14 @@
   <link href="https://fonts.googleapis.com/css?family=Monda|Yanone+Kaffeesatz&display=swap" rel="stylesheet">
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static  'css/styles.css' %}">
+  <style>
+    #design{
+      display:none;
+    }
+     #goal{
+      display:none;
+    }
+  </style>
 
   <script type="text/javascript">
   function validation(form)
@@ -109,17 +117,18 @@
               <div id="uname_error"></div>
             </div>
             <div class="form-group">
-              <input type="number" name="room" id="name" value="">
+              <input type="hidden" name="room" id="name" value="">
+            </div>
+            <div class="form-group" input type="hidden">
+              <select name="goal" id="goal" multiple> 
+              </select>
             </div>
             <div class="form-group">
               <select name="design" id="design" multiple>
-                <option value=""> </option>
-                <option value=""> </option>
-              </select>
+                </select>
             </div>
-
             <div class="form-group" >
-              <input type="number" name="furniture" id="furniture" value="">
+              <input type="hidden" name="furniture" id="furniture" value="">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
@@ -145,12 +154,17 @@
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
   <script type="text/javascript" src="{% static 'javascript/script.js' %}"></script>
   <script type="text/javascript" src="{% static 'javascript/rooms.js' %}"></script>
   <script type="text/javascript" src="{% static 'javascript/goals.js' %}"></script>
   <script type="text/javascript" src="{% static 'javascript/styles.js' %}"></script>
   <script type="text/javascript" src="{% static 'javascript/furn.js' %}"></script>
   <script type="text/javascript" src="{% static 'javascript/time.js' %}"></script>
+  <script type="text/javascript" src="{% static 'javascript/design.js' %}"></script>
+  <script type="text/javascript" src="{% static 'javascript/goal.js' %}"></script>
+
+
 
  </body>
 </html>

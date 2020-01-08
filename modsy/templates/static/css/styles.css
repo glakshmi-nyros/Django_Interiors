@@ -128,8 +128,8 @@ a:hover {
 }
 
 /*.blue class*/
-.blue{
-  border:2px solid #000080;
+.blue:active{
+border: 2px solid #000080;
 }
 
 /*range slider*/

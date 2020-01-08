@@ -1,4 +1,3 @@
-
 var object= [];
 function getData(id,image,content)
 {
@@ -25,16 +24,11 @@ function getData(id,image,content)
   	object.push(content);
 
   }
-
-  
- 
 }
-
 function sample(){  
 var storedNames = JSON.parse(localStorage.getItem("object"));
 $("#name").val(storedNames[0]);
 }
-
 
 
 

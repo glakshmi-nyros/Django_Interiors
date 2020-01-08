@@ -64,7 +64,7 @@ def user_register(request):
             user_requirement.user = user
             user_requirement.save()
             user_requirement_form.save_m2m()
-            redirect(...)
+            return render(request,'register.html')
         else:
             messages.warning(request, 'Please correct the errors below')
     else:  

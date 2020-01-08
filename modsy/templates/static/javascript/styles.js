@@ -19,14 +19,10 @@ function getStyle(id) {
     }
     localStorage.setItem("styles", JSON.stringify(styles))
     styleIds = styles.map(element => JSON.parse(element).id);
-    console.log(styleIds)
+    console.log("styleIds",styleIds)
     assample();
 }
-function assample() {
-    $("#design").val(styleIds);
-    console.log(styleIds)
-}
 function initStyles() {
-  var storedNames = JSON.parse(localStorage.getItem("styles") || '[]');
-  styleIds = storedNames.map(element => JSON.parse(element).id);
+    var storedNames = JSON.parse(localStorage.getItem("styles") || '[]');
+    styleIds = storedNames.map(element => JSON.parse(element).id);
 }

@@ -29,8 +29,14 @@ function getGoal(id) {
 }
 
 function issample() {
-  $("#goal").val(goalIds);
-  console.log(goalIds)
+  var select = document.getElementById("goal");
+  for (var i = 0; i < goalIds.length; i++) {
+    var option = document.createElement("OPTION");
+    var txt = document.createTextNode(goalIds[i]);
+    option.appendChild(txt);
+    option.setAttribute("value",goalIds[i]);
+    select.appendChild(option);
+  }
 }
 function initGoals() {
   var storedNames = JSON.parse(localStorage.getItem("goal") || '[]');

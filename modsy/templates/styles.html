@@ -80,6 +80,23 @@
       <a href="/modsy/register" class="next">Next &raquo;</a> </div>
     </div>
   </div>
+  <script>
+    window.addEventListener('load', (event) => {
+      var styleIds = [];
+      function getStyles() {
+        var storedNames = JSON.parse(localStorage.getItem("styles") || '[]');
+        styleIds = storedNames.map(element => JSON.parse(element).id);
+        setCardColor();
+      }
+      function setCardColor() {
+        for (var i = 0; i < styleIds.length; i++) {
+          elem = "#" + styleIds[i];
+          $(elem).css("background-color", "blue");
+            console.log(elem);
+          }
+        }
+      });
+  </script>
   
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
