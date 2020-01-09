@@ -1,3 +1,5 @@
+// This is for getting the goal ids that are clicked into the <select> field as selected options in form.html
+
 window.addEventListener('load', (event) => {
       var goalIds = [];
       function initGoals() {
@@ -12,10 +14,8 @@ window.addEventListener('load', (event) => {
           option.appendChild(txt);
           option.setAttribute("selected",goalIds[i]);
           select.appendChild(option);
-}
-}
-
-initGoals();
-addArrToList();
-
-});
+        }
+      }
+      initGoals();
+      addArrToList();//This function calling here will push the goalids as options in <select> field in form.
+    });

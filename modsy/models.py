@@ -62,7 +62,7 @@ class user(models.Model):
 	def __str__(self):
 		return self.username
 
-class UserRequirement(models.Model):
+class User_Requirement(models.Model):
 	user=models.ForeignKey(user,on_delete=models.CASCADE)
 	room = models.ForeignKey(room,on_delete=models.CASCADE)
 	goal = models.ManyToManyField(goal)
@@ -70,6 +70,8 @@ class UserRequirement(models.Model):
 	furniture = models.ForeignKey(furniture,on_delete=models.CASCADE)
 	created_at = models.DateTimeField(default=datetime.now)
 	updated_at = models.DateTimeField(default=datetime.now)
+
+
 
 
 

@@ -30,3 +30,14 @@ function initStyles() {
   var storedNames = JSON.parse(localStorage.getItem("styles") || '[]');
   styleIds = storedNames.map(element => JSON.parse(element).id);
 }
+
+
+// This function is for retaining the 
+$(function(){
+let storedNames =JSON.parse(localStorage.getItem("styles") || '[]');
+$.each(storedNames, function( index,value ) {
+let temp = JSON.parse(value);
+$('#design_'+temp['id']).addClass("blue");
+console.log($('#'+temp['id']).attr('id'));
+});
+})

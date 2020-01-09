@@ -1,11 +1,10 @@
-
 //furniture//
 window.onload = function()
 {
   var imagePath = "../static/images/";
   var localStorageSliderNumber;
   var localStorageImagePath; 
-  window.localStorage.setItem('sliderValue', '1');
+  
 
   if (window.localStorage.getItem('sliderValue') != null) {
     localStorageSliderNumber = window.localStorage.getItem('sliderValue');
@@ -34,5 +33,3 @@ window.onload = function()
     
 });
 }
-
-

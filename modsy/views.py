@@ -12,61 +12,60 @@ from django.shortcuts import render,HttpResponseRedirect
 from django.contrib import messages
 from modsy.forms import UserForm
 from modsy.forms import UserRequirementForm
-
 from django import forms
-
-
-
 
 from . models import room
 from . models import goal
 from . models import design
 from . models import user
 from . models import furniture
-from . models import UserRequirement
-
-
+from . models import User_Requirement
 
 # Create your views here.
+
 # This view is for the home page
 def index(request):
 	return render(request, 'index.html',);
+
 #This view is for the rooms page
 def project1(request):
     rooms=room.objects.all()
     return render(request, 'rooms.html',{'room': rooms})
+
 # This view is for the goals page
 def project2(request):
     goals=goal.objects.all()
     return render(request, 'goals.html',{'goal':goals})
+
 # This view is for the furniture page
 def project3(request):
     f=furniture.objects.all()
     return render(request, 'furniture.html',{'furniture':f})
+
 # This view is for the styles page
 def project4(request):
     designs=design.objects.all()
     return render(request, 'styles.html',{'design':designs})
+
 # This view is for register page
 def home(request):
 	return render(request,'register.html')
 
 # This view is for storing all the steps of start a project wizard in the database
-
 def user_register(request):
-    if request.method == 'POST':
-        user_form = UserForm(data=request.POST)
-        user_requirement_form = UserRequirementForm(data=request.POST)
-        if user_form.is_valid() and user_requirement_form.is_valid():
-            user = user_form.save()
-            user_requirement = user_requirement_form.save(commit=False)
+    if request.method == 'POST': # if there is a post request in the form
+        user_form = UserForm(data=request.POST) #first of all it is a user_form will be posted details present in the user_form
+        user_requirement_form = UserRequirementForm(data=request.POST)# after posting the details of the user_form post the details
+        if user_form.is_valid() and user_requirement_form.is_valid(): # if user_form & user_requirement form is valid
+            user = user_form.save()#if form is valid save
+            user_requirement = user_requirement_form.save(commit=True)
             # Set user
             user_requirement.user = user
             user_requirement.save()
             user_requirement_form.save_m2m()
-            return render(request,'register.html')
+            return render(request,'home1.html')
         else:
-            messages.warning(request, 'Please correct the errors below')
+            messages.warning(request, 'Please correct the errors above')
     else:  
         user_form = UserForm()
         user_requirement_form = UserRequirementForm()
