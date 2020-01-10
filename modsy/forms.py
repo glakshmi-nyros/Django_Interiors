@@ -8,9 +8,6 @@ from . models import goal
 from . models import design
 from . models import furniture
 
-
-
-
 class UserForm(forms.ModelForm):
     class Meta:
         model = user

@@ -1,9 +1,6 @@
 from django.db import models
 from datetime import datetime
 
-
-
-
 # Create your models here.
 # This is the model for rooms
 class room(models.Model):
@@ -19,6 +16,7 @@ class room(models.Model):
     	return self.content
 
 # This is the model for goals   
+
 class goal(models.Model):
 	id=models.IntegerField(primary_key=True)
 	goal = models.CharField(max_length=50,default='0000000')
@@ -29,6 +27,7 @@ class goal(models.Model):
 		return self.goal
 
 # This is the model for designs
+
 class design(models.Model):
 	id=models.IntegerField(primary_key=True)
 	image = models.ImageField(upload_to='images')
@@ -41,6 +40,7 @@ class design(models.Model):
 		return self.content
 
 # This is the model for furniture
+
 class furniture(models.Model):
 	id=models.IntegerField(primary_key=True)
 	phrase=models.CharField(max_length=60,default='111111')
@@ -52,6 +52,7 @@ class furniture(models.Model):
 		return self.phrase
 
 # This is the users model
+
 class user(models.Model):
 	username=models.CharField(max_length=20)
 	email=models.CharField(max_length=50,unique=True)
@@ -61,6 +62,8 @@ class user(models.Model):
 
 	def __str__(self):
 		return self.username
+
+# This is the user_requirement model where all the details selected by the user will be stored in this model
 
 class User_Requirement(models.Model):
 	user=models.ForeignKey(user,on_delete=models.CASCADE)

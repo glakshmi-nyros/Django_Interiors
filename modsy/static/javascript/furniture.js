@@ -1,11 +1,9 @@
-//furniture//
+//furniture
 window.onload = function()
 {
   var imagePath = "../static/images/";
   var localStorageSliderNumber;
   var localStorageImagePath; 
-  
-
   if (window.localStorage.getItem('sliderValue') != null) {
     localStorageSliderNumber = window.localStorage.getItem('sliderValue');
   } else {
@@ -31,5 +29,9 @@ window.onload = function()
     window.localStorage.setItem('sliderValue', (i+1));
 
     
+
+
+
 });
+
 }

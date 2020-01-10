@@ -11,12 +11,13 @@
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static  'css/styles.css' %}">
   <style>
-    #design{
+     #design{
       display:none;
     }
      #goal{
       display:none;
     }
+   
   </style>
 
   <script type="text/javascript">
@@ -84,6 +85,8 @@
 </nav>
 <!--NAVBAR ENDS-->
 </head>
+
+
 <body onload = "isValue();sample();initGoals();issample();initStyles();assample();">
   <div class="container20">
     <section id="register" class="bg-light py-5">
@@ -133,15 +136,16 @@
               <input type="hidden" name="furniture" id="furniture" value="">
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" name="email" class="form-control" required><br>
-              <div id="name_error" style="color:red;"></div></div>
+              <label for="email">email</label>
+              <input type="text" name="email" id="email" class="form-control" required><br>
+              <div id="name_error" style="color:red;"></div>
+            </div>
             <div class="form-group">
               <label for="password2">Password</label>
               <input type="password" name="password" class="form-control" required>
               <div id="pwd_error" style="color:red;"></div>
             </div>
-            <div class="button"><input type="submit" value="Save the Project" style="background-color:#000080;" class="btn btn-secondary btn-block" onclick="return validation(form),window.localStorage.clear();">
+            <div class="button"><input type="submit" value="Save the Project" style="background-color:#000080;" class="btn btn-secondary btn-block" onclick="return validation(form)">
           </form>
           <!-- Form ends-->
         </div>
@@ -150,6 +154,8 @@
     </div>
    </div>
   </section>
+  
+
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 

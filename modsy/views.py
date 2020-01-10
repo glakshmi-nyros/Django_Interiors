@@ -58,12 +58,14 @@ def user_register(request):
         user_requirement_form = UserRequirementForm(data=request.POST)# after posting the details of the user_form post the details
         if user_form.is_valid() and user_requirement_form.is_valid(): # if user_form & user_requirement form is valid
             user = user_form.save()#if form is valid save
-            user_requirement = user_requirement_form.save(commit=True)
+            user_requirement = user_requirement_form.save(commit=False)
             # Set user
             user_requirement.user = user
             user_requirement.save()
             user_requirement_form.save_m2m()
-            return render(request,'home1.html')
+            messages.success(request,('Project saved successfully'))
+
+            return render(request,'register.html')
         else:
             messages.warning(request, 'Please correct the errors above')
     else:  

@@ -59,7 +59,11 @@
   #p1{
     height: 10px;}
 </style>
-
+<script>
+   function showVal(newVal){
+        document.getElementById("SliderRange").innerHTML=newVal;
+      }
+</script>
 <!-- Script tags-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="{% static 'javascript/script.js' %}"></script>
@@ -100,7 +104,6 @@
   </div>
 </nav>
 <!-- The NAVBAR ends-->
-
 <center>
   <div class="container-3 mt-5 ml-5" >
     <h4><center>How finished is your space?</center></h4>
@@ -112,21 +115,21 @@
   <img src="/static/images/2.jpg" width="400" height="180"><!--Image2-->
   <img src="/static/images/3.jpg" width="400" height="180"><!--Image3-->
 </div><br><!-- End of Image sliding-->
-
 <!--Range slider starts-->
 <div class="rangeslider">
-  <input type="range" min="1" max="3" value="1" class="myslider" id="sliderRange">
+  <input type="range" min="1" max="3" value="1" class="myslider" id="sliderRange" onload="showVal(this.value)">
+
   <div class="container">
     <div id="sliderOutput">
-      <div class="col-4">
-        <h6 class="display-6 mt-3"><b><center>Starting from scratch</center></b></h6>
+      <div class="col-4" id="range_1">
+        <h6 class="display-6 mt-3" ><b><center>Starting from scratch</center></b></h6>
         <p class="demo"><center>I'm designing the room </p>
       </div>
-      <div class="col-4">
+      <div class="col-4" id="range_2">
         <h6 class="display-6 mt-3"><b>Somewhere in Between</b></h6>
         <p class="demo">I'm designing around a few pieces I already own</p>
       </div>
-      <div class="col-4">
+      <div class="col-4" id="range_3">
         <h6 class="display-6 mt-3"><b>Mostly furnished</b></h6>
         <p class="demo">I want to put the finishing touches on my room</p>
       </div>
@@ -142,7 +145,6 @@
       </div>
     </div>  
   </center>
-    
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script type="text/javascript" src="{% static 'javascript/furniture.js' %}"></script>

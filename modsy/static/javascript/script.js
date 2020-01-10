@@ -7,12 +7,8 @@ $('.card6').click(function() {
   $(this).addClass("blue");
 });
 
-
-
-
-
-
 // goals
+
 $("#room_1").click(function(){
        $("#room_1").toggleClass("blue")
 });
@@ -51,6 +47,7 @@ $("#room_9").click(function(){
 });
 
 // Designs 
+
 $("#design_1").click(function(){
        $("#design_1").toggleClass("blue")
 });
