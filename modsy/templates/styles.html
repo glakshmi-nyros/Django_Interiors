@@ -19,7 +19,7 @@
   </button>
   <nav class="navbar navbar-light">
   <a class="navbar-brand" href="MODSY">
-    <img src="../static/images/logo.png" width="40" height="40" alt="">
+    <img src="/static/images/logo.png" width="40" height="40" alt="">
   </a>
 </nav>
 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -80,23 +80,7 @@
       <a href="/modsy/register" class="next">Next &raquo;</a> </div>
     </div>
   </div>
-  <script>
-    window.addEventListener('load', (event) => {
-      var styleIds = [];
-      function getStyles() {
-        var storedNames = JSON.parse(localStorage.getItem("styles") || '[]');
-        styleIds = storedNames.map(element => JSON.parse(element).id);
-        setCardColor();
-      }
-      function setCardColor() {
-        for (var i = 0; i < styleIds.length; i++) {
-          elem = "#" + styleIds[i];
-          $(elem).css("background-color", "blue");
-            console.log(elem);
-          }
-        }
-      });
-  </script>
+  
   
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

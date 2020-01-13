@@ -32,14 +32,8 @@ function issample() {
   console.log(goalIds)
 }
 function initGoals() {
-  var storedNames = JSON.parse(localStorage.getItem("goal") || '[]');
-  goalIds = storedNames.map(element => JSON.parse(element).id);
+  goal = JSON.parse(localStorage.getItem("goal") || '[]');
+  goalIds = goal.map(element => JSON.parse(element).id);
+  goalIds.forEach(function(i){$("#room_"+i).addClass('blue');});
 }
-$(function(){
-  let storedNames =JSON.parse(localStorage.getItem("goal") || '[]');
-  $.each(storedNames, function( index, value ) {
-    let temp = JSON.parse(value);
-    $('#room_'+temp['id']).addClass("blue");
-    console.log($('#'+temp['id']).attr('id'));
-  });
-})
+initGoals();

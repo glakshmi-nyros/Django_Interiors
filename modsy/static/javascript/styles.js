@@ -27,17 +27,10 @@ function assample() {
     console.log(styleIds)
 }
 function initStyles() {
-  var storedNames = JSON.parse(localStorage.getItem("styles") || '[]');
-  styleIds = storedNames.map(element => JSON.parse(element).id);
+  styles = JSON.parse(localStorage.getItem("styles") || '[]');
+  styleIds = styles.map(element => JSON.parse(element).id);
+  styleIds.forEach(function(i){$("#design_"+i).addClass('blue');});
 }
+initStyles();
 
 
-// This function is for retaining the 
-$(function(){
-let storedNames =JSON.parse(localStorage.getItem("styles") || '[]');
-$.each(storedNames, function( index,value ) {
-let temp = JSON.parse(value);
-$('#design_'+temp['id']).addClass("blue");
-console.log($('#'+temp['id']).attr('id'));
-});
-})
