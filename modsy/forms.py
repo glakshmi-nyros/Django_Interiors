@@ -1,6 +1,4 @@
-
 from django import forms
-from . models import user
 from django.contrib.auth.models import User
 from . models import User_Requirement
 from . models import room
@@ -10,7 +8,7 @@ from . models import furniture
 
 class UserForm(forms.ModelForm):
     class Meta:
-        model = user
+        model = User
         fields = ('username','email','password')
 
     def clean_email(self):
@@ -27,3 +25,17 @@ class UserRequirementForm(forms.ModelForm):
     class Meta:
         model = User_Requirement
         fields=('room','goal','design','furniture')
+        error_messages = {
+            'room': {
+                'required': "Please select any of the room in the first step",
+            },
+            'goal': {
+                'required': "Please select any of the goals in the second step",
+            },
+            'design': {
+                'required': "Please select any of the design in the forth step",
+            },
+            'furniture': {
+                'required': "Please select any of the furniture in the third step",
+            },
+        }

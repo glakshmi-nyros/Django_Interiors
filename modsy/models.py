@@ -1,5 +1,7 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 # This is the model for rooms
@@ -51,20 +53,12 @@ class furniture(models.Model):
 
 # This is the users model
 
-class user(models.Model):
-	username=models.CharField(max_length=20)
-	email=models.CharField(max_length=50,unique=True)
-	password=models.CharField(max_length=50,default='0000000')
-	created_at = models.DateTimeField(default=datetime.now)
-	updated_at = models.DateTimeField(default=datetime.now)
 
-	def __str__(self):
-		return self.username
 
 # This is the user_requirement model where all the details selected by the user will be stored in this model
 
 class User_Requirement(models.Model):
-	user=models.ForeignKey(user,on_delete=models.CASCADE)
+	user=models.OneToOneField(User,on_delete=models.CASCADE)
 	room = models.ForeignKey(room,on_delete=models.CASCADE)
 	goal = models.ManyToManyField(goal)
 	design = models.ManyToManyField(design)

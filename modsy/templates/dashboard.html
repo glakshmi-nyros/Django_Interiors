@@ -1,0 +1,91 @@
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% load static %}
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Custom styles -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+
+
+<!--The NAVBAR Starts-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <nav class="navbar navbar-light">
+    <a class="navbar-brand" href="#">
+      <img src="../static/images/logo.png" width="40" height="40" alt="">
+    </a>
+  </nav>
+  <a class="navbar-brand" href="#"><b>MODSY</b></a>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><b>How it works? <span class="sr-only">(current)</span></b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><b>Pricing</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><b>Style quiz</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><b>Examples</b></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="#"><b>Blog</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><b>FAQ</b></a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href=""><button type="button" class="btn2  mt-1">Welocme {{user.username}}</button></a></li>
+      <li><a href="/modsy/logout"><button type="button" class="btn2  mt-1">Logout</button></a></li>
+
+
+    </ul>
+  </div>
+</nav>
+<!--NAVBAR ENDS-->
+</head>
+<body>
+
+<details>
+  <summary class="summary ml-4">User Details</summary>
+  <p class="p1 ml-4">The contents that are selected by the user</p>
+  <p class="p2 ml-4">{{request.user.user_requirement.user}}</p>
+</details>
+
+<p class="p3 ml-4 mt-4"><b>Room:<br></b>{{request.user.user_requirement.room}}</p>
+
+ <p class="p4 ml-4"><b>GOAL:</b>
+  {% for goal in request.user.user_requirement.goal.all %}
+  <br>{{goal}}
+  {% if not forloop.last %}, {% endif %}
+  {% endfor %}
+</p>
+<p class="p5 ml-4"><b>FURNITURE:</b><br>{{request.user.user_requirement.furniture}}</p>
+<p class="p4 ml-4"><b>DESIGN:</b>
+  {% for design in request.user.user_requirement.design.all %}
+  <br>{{design}}
+  {% if not forloop.last %}, {% endif %}
+  {% endfor %}
+</p>
+<!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+ </body>
+</html>
+</body>
+</html>
+{% endblock %}
