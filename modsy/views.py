@@ -23,7 +23,7 @@ from . models import room
 from . models import goal
 from . models import design
 from . models import furniture
-from . models import User_Requirement
+from . models import project
 from django.http import HttpResponseRedirect
 
 
@@ -76,7 +76,6 @@ def user_register(request):
          user_requirement.user = User
          user_requirement.save()
          user_requirement_form.save_m2m()
-         messages.success(request,('Project saved successfully'))
          return render(request,'home1.html')
         else:
           messages.warning(request, 'Please correct the errors above')
@@ -86,7 +85,7 @@ def user_register(request):
     return render(request,'register.html', {'user_form': user_form, 'requirements_form': user_requirement_form})
 
 
-
+# This is a login view
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -103,10 +102,15 @@ def login(request):
     # else: ## removed 2
     return render(request, 'login.html')
 
-
-
+# This is a dashboard view
 def dashboard(request):
+    return render(request, 'index1.html',);
+
+# This is a account view
+def account(request):
     return render(request, 'dashboard.html',);
+
+# This is a logout view
 def logout(request):
     messages.error(request,'You are now logged out')
     return render(request, 'login.html',);

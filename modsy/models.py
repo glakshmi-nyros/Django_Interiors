@@ -57,7 +57,7 @@ class furniture(models.Model):
 
 # This is the user_requirement model where all the details selected by the user will be stored in this model
 
-class User_Requirement(models.Model):
+class project(models.Model):
 	user=models.OneToOneField(User,on_delete=models.CASCADE)
 	room = models.ForeignKey(room,on_delete=models.CASCADE)
 	goal = models.ManyToManyField(goal)

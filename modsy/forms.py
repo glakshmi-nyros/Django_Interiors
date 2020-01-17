@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from . models import User_Requirement
+from . models import project
 from . models import room
 from . models import goal
 from . models import design
@@ -23,7 +23,7 @@ class UserForm(forms.ModelForm):
             raise forms.ValidationError('This email address is already in use.')
 class UserRequirementForm(forms.ModelForm):
     class Meta:
-        model = User_Requirement
+        model = project
         fields=('room','goal','design','furniture')
         error_messages = {
             'room': {

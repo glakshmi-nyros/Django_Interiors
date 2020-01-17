@@ -9,7 +9,7 @@ from .models import room
 from .models import goal
 from .models import design
 from .models import furniture
-from .models import User_Requirement
+from .models import project
 
 # Register your models here.
 
@@ -17,4 +17,4 @@ admin.site.register(room)
 admin.site.register(goal)
 admin.site.register(design)
 admin.site.register(furniture)
-admin.site.register(User_Requirement)
+admin.site.register(project)

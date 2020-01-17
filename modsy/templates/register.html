@@ -12,13 +12,13 @@
   <link rel="stylesheet" type="text/css" href="{% static  'css/styles.css' %}">
 
 <!--Script-->
-  <script type="text/javascript">
+<script type="text/javascript">
   function validation(form)
   {
     reg=/^[a-zA-Z0-9_-]{3,15}$/;
     if(!reg.test(form.username.value))
     {
-     document.getElementById('uname_error').innerHTML = 'enter valid username without special characters';
+      document.getElementById('uname_error').innerHTML = 'enter valid username without special characters';
       form.username.focus();
       return false;
     }
