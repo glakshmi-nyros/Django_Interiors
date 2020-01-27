@@ -14,6 +14,18 @@ from django.shortcuts import render,HttpResponseRedirect
 from django.contrib import messages,auth
 from modsy.forms import UserForm
 from modsy.forms import UserRequirementForm
+from django.contrib.auth.forms import UserChangeForm,PasswordChangeForm
+from modsy.forms import EditProfileForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
+from braces.views import LoginRequiredMixin
+from django.contrib.auth import get_user_model
+from django.views import generic
+
+
+
+
+
 from django.contrib.auth import authenticate, login
 
 
@@ -86,7 +98,8 @@ def user_register(request):
 
 
 # This is a login view
-def login(request):
+
+def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -104,7 +117,11 @@ def login(request):
 
 # This is a dashboard view
 def dashboard(request):
-    return render(request, 'index1.html',);
+    if request.user.is_superuser:
+        messages.error(request,'Invalid Credentials')
+        return HttpResponseRedirect(reverse('modsy:login'))
+
+    return render(request, 'index1.html')
 
 # This is a account view
 def account(request):
@@ -115,5 +132,39 @@ def logout(request):
     messages.error(request,'You are now logged out')
     return render(request, 'login.html',);
 
+def edit_profile(request):
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('modsy:account'))
+    else:
+         form = EditProfileForm()
+    return render(request,'edit_profile.html',{'form':form})
 
 
+def reset_password(request):
+    messages.error(request,'You had updated your password again login with your new credentials')
+    return render(request, 'login.html',);
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            return HttpResponseRedirect(reverse('modsy:reset_password'))
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'change_password.html', {
+        'form': form
+    })
+class UserListView(LoginRequiredMixin, generic.ListView):
+    model = get_user_model()
+    # These next two lines tell the view to index lookups by username
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
+    template_name = 'jobexpertapp/users.html'
+    login_url = '/login'

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'modsy',
+    'django_private_chat'
 ]
 
 MIDDLEWARE = [
@@ -80,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ModsyDB',
         'USER': 'admin',
-        'PASSWORD': 'root',
+        'PASSWORD': 'Nyros@123',
         'HOST': '',
         'PORT': '',
     }
@@ -129,3 +130,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/images/')
+
+CHAT_WS_SERVER_HOST = 'localhost'
+CHAT_WS_SERVER_PORT = 5001
+CHAT_WS_SERVER_PROTOCOL = 'ws'

@@ -24,9 +24,13 @@
     hr.new1 {
       border-top: 4px solid #000080;
     }
+    .button{
+      width: 20%;
+      margin-right: 30%;
+    }
   </style>
 
-  <!--The NAVBAR Starts-->
+<!--The NAVBAR Starts-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -77,6 +81,8 @@
     <hr class="new1">
     <p class="p3 ml-4 mt-4"><b>Username: </b>{{request.user.project.user}}</p>
     <p class="p3 ml-4 mt-4"><b>Email: </b>{{user.email}}</p>
+    <a href="account/edit/" class="button ml-2">Edit Profile</a>
+    <a href="/dialogs/" class="button ml-2">Messages</a>
     <hr class="new2">
 
     <!--Your Project-->
@@ -93,8 +99,8 @@
       {% if not forloop.last %}, {% endif %}
       {% endfor %}
     </p>
+    
     <hr class="new2">
-
     <!--Furniture-->
     <p class="p5 ml-4"><b><u>FURNITURE</u>:</b><br>{{request.user.project.furniture}}</p>
     <hr class="new2">

@@ -16,10 +16,16 @@ urlpatterns = [
     path('styles/', views.project4, name='project4'),
     path('register/', views.home, name='home'),
     path('user_register/', views.user_register, name='user_register'),
-    path('login/', views.login,name='login'),
+    path('login/', views.login_view,name='login'),
     path('dashboard', views.dashboard,name='dashboard'),
     path('account', views.account,name='account'),
-    path('logout/', views.logout,name='logout')
+    path('logout/', views.logout,name='logout'),
+    path('account/edit/',views.edit_profile,name="edit_profile"),
+    path('account/password/',views.change_password,name='change_password'),
+    path('account/resetpassword/',views.reset_password,name='reset_password'),
+    path('users/', views.UserListView.as_view(), name='user_list'),
+
+
 
 
 

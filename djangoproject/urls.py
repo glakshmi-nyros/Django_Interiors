@@ -17,12 +17,16 @@ from django.contrib import admin
 from django.urls import include,path
 from django.conf import settings
 from django.conf.urls.static import static
+from django_private_chat import urls as django_private_chat_urls
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('modsy/', include('modsy.urls')),
+    path('', include('django_private_chat.urls')),
+    
+
 
 ]
 urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -5,6 +5,8 @@ from . models import room
 from . models import goal
 from . models import design
 from . models import furniture
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
 
 class UserForm(forms.ModelForm):
     class Meta:
@@ -39,3 +41,9 @@ class UserRequirementForm(forms.ModelForm):
                 'required': "Please select any of the furniture in the third step",
             },
         }
+class EditProfileForm(UserChangeForm):
+    template_name='edit_profile'
+
+    class Meta:
+        model = User
+        fields = ('username','email','password',)
