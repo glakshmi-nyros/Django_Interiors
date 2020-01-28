@@ -11,9 +11,14 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+dotenv_path = os.path.join(BASE_DIR, '.env')
+load_dotenv(dotenv_path)
 
 
 # Quick-start development settings - unsuitable for production
@@ -38,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'modsy',
-    'django_private_chat'
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +84,7 @@ WSGI_APPLICATION = 'djangoproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ModsyDB',
+        'NAME': 'Modsy',
         'USER': 'admin',
         'PASSWORD': 'Nyros@123',
         'HOST': '',
@@ -134,3 +139,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/images/')
 CHAT_WS_SERVER_HOST = 'localhost'
 CHAT_WS_SERVER_PORT = 5001
 CHAT_WS_SERVER_PROTOCOL = 'ws'
+
+TWILIO_ACCOUNT_SID = os.environ.get('AC4b5eed5cdecf4367e357b5dddf5b1708', None)
+TWILIO_API_KEY = os.environ.get('SK83ba91aaec36734f91bd37cb65b72261', None)
+TWILIO_API_SECRET = os.environ.get('rHf7ahBFYu8mwAEa0ouvTlQ6eRFJtSDf', None)
+TWILIO_CHAT_SERVICE_SID = os.environ.get('ISb1d3e65f214e413d9e2c886830779c43', None)

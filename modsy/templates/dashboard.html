@@ -82,13 +82,17 @@
     <p class="p3 ml-4 mt-4"><b>Username: </b>{{request.user.project.user}}</p>
     <p class="p3 ml-4 mt-4"><b>Email: </b>{{user.email}}</p>
     <a href="account/edit/" class="button ml-2">Edit Profile</a>
-    <a href="/dialogs/" class="button ml-2">Messages</a>
+    <a href="/" class="button ml-2">Messages</a>
+
     <hr class="new2">
 
     <!--Your Project-->
+    {% if request.user.is_superuser %}
     <h3 class="display-5 mt-4 ml-3"><u>Your Project</u></h3>
     <hr class="new1">
+    <h3><center>No projects</center></h3>
     <!--Room-->
+    {% else %}
     <p class="p3 ml-4 mt-4"><b><u>ROOM</u>:<br></b>{{request.user.project.room}}</p>
     <hr class="new2">
     
@@ -98,6 +102,7 @@
       <br>{{goal}}
       {% if not forloop.last %}, {% endif %}
       {% endfor %}
+
     </p>
     
     <hr class="new2">
@@ -111,6 +116,7 @@
       <br>{{design}}
       {% if not forloop.last %}, {% endif %}
       {% endfor %}
+      {% endif %}
     </p>
     <hr class="new1">
   </div>

@@ -117,10 +117,6 @@ def login_view(request):
 
 # This is a dashboard view
 def dashboard(request):
-    if request.user.is_superuser:
-        messages.error(request,'Invalid Credentials')
-        return HttpResponseRedirect(reverse('modsy:login'))
-
     return render(request, 'index1.html')
 
 # This is a account view
@@ -166,5 +162,5 @@ class UserListView(LoginRequiredMixin, generic.ListView):
     # These next two lines tell the view to index lookups by username
     slug_field = 'username'
     slug_url_kwarg = 'username'
-    template_name = 'jobexpertapp/users.html'
+    template_name = 'djang_prvate_chat/templates/users.html'
     login_url = '/login'
